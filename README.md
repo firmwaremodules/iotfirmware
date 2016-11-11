@@ -1,4 +1,4 @@
-# Iot Firmware
+# IoT Firmware
 Secure and scalable firmware for the Internet of *Things*.  These firmware reference designs are easy to use and ready to work with popular development platforms for ARM Cortex-M MCUs.
 
 ## Supported Development Platforms
@@ -14,7 +14,7 @@ A brief description of available IoT applications is provided below.
 
 ### OTA Update Demo */otaupdate*
 
-Demonstrates a robust live over-the-air firmware application update.  The firmware update binary is pulled from this very repository.
+Demonstrates a robust live over-the-air firmware application update.  The firmware update binary is securely pulled from this very repository.
 
 ## Loading Firmware
 
