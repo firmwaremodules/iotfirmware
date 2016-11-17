@@ -42,10 +42,19 @@ The demo application polls a fixed URL for the presence of newer firmware images
 
 If the update is interrupted at any time, for example mid-way during the download or during a flash write, or if the image could not otherwise be correctly written in its entirety to the APP2 section, the bootloader will not accept the content of APP2 and continue to boot the existing application. This is an extremely robust update process designed for IoT devices operating in real-world conditions and requires no external components.  However, it comes at a cost - the amount of internal flash available to applications is reduced by half.
 
+### What will happen?
+
+* The firmware application running on the MSP432 target MCU will be updated by downloading a new version of the same application from a folder on GitHub.
+* Every time the running application successfully connects to your local WiFi AP, it will send a tweet to https://twitter.com/MSPLaunchPad/ containing the "Unique ID" shown in the terminal window.
+
 ### Steps to complete the demo
 
 1. **Assemble the hardware.** Assemble the MSP432 LaunchPad and CC3100 BoosterPack as shown in the cover image and connect to your PC with a USB cable.
+
+  ![](https://github.com/firmwaremodules/iotfirmware/raw/master/otaupdate/msp432/resources/OTA-MSP432-Cover.jpg "MSP432 LaunchPad with CC3100 BoosterPack")
+  
 2. **Get the firmware files.** Download the firmware loader tool `fm_load.exe` and the `OTA-MSP432-CC3100_x_x_x_MAN_x.bin` firmware binary programming file to a folder on your PC.
+
 3. **Test the connection.** Open a console and run `fm_load.exe` to ensure your LaunchPad is connected.  You should see the following:
 
   Firmware Module System Firmware Loader v1.1.56  
@@ -72,15 +81,35 @@ If the update is interrupted at any time, for example mid-way during the downloa
   INFO:root:4 hardware watchpoints  
   [====================] 100%  
   
-  Observe the serial terminal window's output [link]() showing the need to setting the WiFi parameters which we'll do next.
+  Observe the serial terminal window's output showing the need to setting the WiFi parameters which we'll do next.
   
-7. **Provision the device's WiFi settings.**  To do this we must boot into the device's MTA (manufacturing test application) by pulling GPIO P4.0 high and resetting the board.  Connect a short jumper wire as shown [link]() between the BoosterPack connector pins P3-4 and P1-1 and press the reset button.  The serial terminal will show a simple menu requesting that you fill in 3 fields, your WiFi network's SSID, security type, and passkey.  Enter each in turn.  When complete, commit the settings to flash with menu option 4.  Remove the jumper wire from the 3.3V pin but leave the other end attached - you'll need to use it again later.
+7. **Provision the device's WiFi settings.**  To do this we must boot into the device's MTA (manufacturing test application) by pulling GPIO P4.0 high and resetting the board.  Connect a short jumper wire as shown between the BoosterPack connector pins P3-4 and P1-1 and press the reset button.  
 
-8. **Perform the update.** Reset the board (ensure the jumper is disconnected) to boot back into the main application.  This time it should connect to your local WiFi network and proceed to download and install the firmware update sourced from OTA-MSP432-CC3100_1_1_15_APP_0xA94C2B4C.fmu.  This update is identical in function to the previous version, except that the version 'minor' digit has been incremented from 0 to 1, and there is an extra message in the banner indicating that the updated app is running.  When the update is complete, the board automatically reboots and you should see the updated application now running out of the internal flash's APP2 section.
+  ![](https://github.com/firmwaremodules/iotfirmware/raw/master/otaupdate/msp432/resources/OTA-MSP432-jumper-on.jpg "jumper on")  
+  The serial terminal will show a simple menu requesting that you fill in 3 fields, your WiFi network's SSID, security type, and passkey.  Enter each in turn as shown.  
+  
+  ![](https://github.com/firmwaremodules/iotfirmware/raw/master/otaupdate/msp432/resources/OTA-MSP432-MTA-provision.png "provisioning menu")  
 
-9. **Rollback the update.**
+  When complete, commit the settings to flash with menu option `4) Save WiFi settings`.  Remove the jumper wire from the 3.3V pin but leave the other end attached - you'll need to use it again later.  
+  
+  ![](https://github.com/firmwaremodules/iotfirmware/raw/master/otaupdate/msp432/resources/OTA-MSP432-jumper-off.jpg "jumper off")  
+  
+8. **Perform the update.** Reset the board (ensure the jumper is disconnected) to boot back into the main application.  This time it should connect to your local WiFi network and proceed to download and install the firmware update sourced from OTA-MSP432-CC3100_1_1_15_APP_0xA94C2B4C.fmu.  
 
-10. **Interrupt the update.**
+  ![](https://github.com/firmwaremodules/iotfirmware/raw/master/otaupdate/msp432/resources/OTA-MSP432-APP-update.png "APP updating")  
+
+  This update is identical in function to the previous version, except that the version 'minor' digit has been incremented from 0 to 1, and there is an extra message in the banner indicating that the updated app is running.  When the update is complete, the board automatically reboots and you should see the updated application now running out of the internal flash's APP2 section.  
+
+  ![](https://github.com/firmwaremodules/iotfirmware/raw/master/otaupdate/msp432/resources/OTA-MSP432-APP-new.png "APP updated")  
+
+9. **Rollback the update.** Re-connect the jumper wire between P4.0 and 3.3V and reset the board to access the MTA.  The menu will have a new option `5) rollback a firmware update` as shown. Select this option and confirm with `y`. 
+
+  ![](https://github.com/firmwaremodules/iotfirmware/raw/master/otaupdate/msp432/resources/OTA-MSP432-MTA-rollback.png "rollback menu")
+
+
+10. **Interrupt the update.**  Remove the jumper wire again from the 3.3V pin and reset the board to boot the main APP.  Now this time around, you want to have your finger hovering over the reset button as the demo progresses.  When the `updating.........` text begins to appear in the terminal window, press the reset button to interrupt the download mid-update.  At this stage, a portion of the image has been written to the APP2 section in internal flash, and a flash write operation may have been ongoing.  When the application boots up again, it remains untouched and is the same as before.  The update is detected and re-attempted.  You can also remove power to LaunchPad during this update period.  If you miss the update window and it completes, just perform a rollback again. See example terminal window output below.
+
+  ![](https://github.com/firmwaremodules/iotfirmware/raw/master/otaupdate/msp432/resources/OTA-MSP432-APP-interrupted.png "APP update interrupted")
 
 ### So how does this work?
 
