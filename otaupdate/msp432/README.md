@@ -115,7 +115,7 @@ If the update is interrupted at any time, for example mid-way during the downloa
 
 The bootloader, manufacturing test application and main application are independently developed, compiled and linked with complete vector tables.  They are assembled into the combined MAN image in a post-build ("release") step.  At the same time, the application images are embedded into a firmware update container format (**.fmu**) and then encrypted.  You can confirm that the .fmu file is encrypted by noting that there is no evidence of a vector table anywhere in the file including the SP and PC initialization values typical at word offsets 0 and 1.
 
-The bootloader is located at the beginning of the MAN image and after programming, it is placed at the location where the Cortex-M4 processor expects an application to reside on startup.  The bootloader performs self-tests, checks the status of the MTA selection pin (P4.0) and verfies the integrity of all application images to decide where to set the processor's VTOR (vector table offset register).  Once the VTOR is set, the PC (program counter) is moved to point to the target application's reset vector (specified at word offset 1 in the target application's vector table). The bootloader's job ends there and the application's startup procedures take over and reconfigures the device as required for the application.
+The bootloader is located at the beginning of the MAN image and after programming, it is placed at the location where the Cortex-M4 processor expects an application to reside on startup.  The bootloader performs self-tests, checks the status of the MTA selection pin (P4.0) and verifies the integrity of all application images to decide where to set the processor's VTOR (vector table offset register).  Once the VTOR is set, the PC (program counter) is moved to point to the target application's reset vector (specified at word offset 1 in the target application's vector table). The bootloader's job ends there and the application's startup procedures take over and reconfigures the device as required for the application.
 
 If the bootloader encounters any fatal errors, it is designed to signal the error condition to port P1.0 - conveniently attached to the LaunchPad's red LED1.
 
@@ -125,7 +125,7 @@ The encryption key is stored with the application and is therefore vulnerable to
 
 ### What's next
 
-You've just experienced the result of signficant behind-the-scenes effort to coordinate the production and consumption of multiple firmware entities for an MCU-based IoT device. This IoT firmware update demo is just the tip of the iceberg when it comes to the complex world of IoT device management. Other, more functional, IoT application demos will be built on top of this technology.  
+You've just experienced the result of significant behind-the-scenes effort to coordinate the production and consumption of multiple firmware entities for an MCU-based IoT device. This IoT firmware update demo is just the tip of the iceberg when it comes to the complex world of IoT device management. Other, more functional, IoT application demos will be built on top of this technology.  
 
 This specific demo could be enhanced to show:
 * Updating the firmware on the external CC3100 network processor using the same transfer mechanism.  Instead of "APP" files the network processor updates could be "NWP" files and the OTA server running on the MSP432 would route those update file contents to the CC3100's SFLASH as appropriate.
