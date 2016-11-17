@@ -69,7 +69,7 @@ If the update is interrupted at any time, for example mid-way during the downloa
   INFO:root:6 hardware breakpoints, 4 literal comparators  
   INFO:root:CPU core is Cortex-M4  
   INFO:root:FPU present  
-  INFO:root:4 hardware watchpoints 
+  INFO:root:4 hardware watchpoints  
   [====================] 100%  
   
   Observe the serial terminal window's output [link]() showing the need to setting the WiFi parameters which we'll do next.
@@ -81,6 +81,18 @@ If the update is interrupted at any time, for example mid-way during the downloa
 9. **Rollback the update.**
 
 10. **Interrupt the update.**
+
+### So how does this work?
+
+The bootloader, manufacturing test application and main application are independently developed, compiled and linked with complete vector tables.  They are assembled into the combined MAN image in a post-build ("release") step.  At the same time, the application images are embedded into a firmware update container format (**.fmu**) and then encrypted.  You can confirm that the .fmu file is encrypted by noting that there is no evidence of a vector table anywhere in the file including the SP and PC initialization values typical at word offsets 0 and 1.
+
+The bootloader is located at the beginning of the MAN image and after programming is placed at the location where the Cortex-M4 processor expects an application to reside on startup.  The bootloader performs self-tests, checks the status of the MTA selection pin (P4.0) and verfies the integrity of all application images to decide where to set the processor's VTOR (vector table offset register).  Once the VTOR is set, the PC (program counter) is moved to point to the target application's reset vector (specified at word offset 1 in the target application's vector table). The bootloader's job ends there and the application's startup procedures take over and reconfigures the device as required for the application.
+
+If the bootloader encounters any fatal errors, it is designed to signal the error condition to port P1.0 - conveniently attached to the LaunchPad's red LED1.
+
+The encryption key is stored with the application and is therefore vulnerable to inspection in the MAN image.  However the MAN image is not distributed and intended to be used only in a "trusted" product manufacturing environment (such as your workbench or lab).  Once the MAN image is programmed onto the device, and the JTAG port has been disabled and the MSP432's own INFO-section bootloader has been disabled or password protected, the encryption key and indeed the firmware content itself is no longer easily accessible to anyone that can gain access to your firmware update file or device.
+
+
 
 ### What's next
 
