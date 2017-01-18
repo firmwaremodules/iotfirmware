@@ -13,8 +13,11 @@ TI MCU and LaunchPad Ecosystem:
 The MSP432 is a more capable "gateway-class" device with more RAM and Flash but no internal radio.  The MSP432's low-power architecture means that it can be built into the design of battery-powered IoT gateways and edge-routers.
 
 The CC26XX and CC13XX class of devices offer extremely low power consumption with on-chip radios and LPLAN network stacks making them ideal for implementing devices at the IoT's edge - connecting to sensors and actuators to interact with the physical world.
+* The CC26xx devices target 2.4 GHz phy LPLANs including BLE, 802.15.4
+* The CC1310 device targets sub-GHz phy LPLANs including 802.15.4g and proprietary.
+* The CC1350 device targets a hybrid phy network architecture with BLE (2.4) and 802.15.4 (sub-GHz) possible to support novel device provisioning schemes.
 
-The CC3100 is a WiFi network processor hosting the entire secure WiFi network stack.  A simple interface allows mating to the MSP432 gateway MCU.
+The CC3100 is a WiFi network processor hosting the entire secure WiFi network stack.  A simple interface allows mating to the MSP432 gateway MCU (and even directly to the CC26xx and CC13xx devices as demonstrated in the OTA Update demos).
 
 All of these devices have on-board security support allowing for the design of extremely secure end-to-end IoT networks.
 
