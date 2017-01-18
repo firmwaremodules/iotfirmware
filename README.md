@@ -1,11 +1,23 @@
 # IoT Firmware
 
-Secure and scalable firmware for the Internet of *Things*.  These firmware reference designs are easy to use and ready to work with popular development platforms for ARM Cortex-M MCUs.
+Secure, scalable and low-power firmware for the Internet of *Things*.  These firmware reference designs are easy to use and ready to work with popular development platforms for ARM Cortex-M MCUs.
 
 ## Supported Development Platforms
 
 TI MCU and LaunchPad Ecosystem:
 * MSP432 with CC3100  [*MSP-EXP432P401R + CC3100BOOST*]
+* CC2650 with CC3100  [*LAUNCHXL-CC2650 + CC3100BOOST*]
+* CC1350 with CC3100  [*LAUNCHXL-CC1350 + CC3100BOOST*]
+* CC1310 with CC3100  [*LAUNCHXL-CC1310 + CC3100BOOST*]
+
+The MSP432 is a more capable "gateway-class" device with more RAM and Flash but no internal radio.  The MSP432's low-power architecture means that it can be built into the design of battery-powered IoT gateways and edge-routers.
+
+The CC26XX and CC13XX class of devices offer extremely low power consumption with on-chip radios and LPLAN network stacks making them ideal for implementing devices at the IoT's edge - connecting to sensors and actuators to interact with the physical world.
+
+The CC3100 is a WiFi network processor hosting the entire secure WiFi network stack.  A simple interface allows mating to the MSP432 gateway MCU.
+
+All of these devices have on-board security support allowing for the design of extremely secure end-to-end IoT networks.
+
 
 ## Interesting IoT Applications
 
@@ -19,6 +31,6 @@ Demonstrates a robust live over-the-air firmware application update.  The firmwa
 
 ## Loading Firmware
 
-The firmware binary **.bin** files can be loaded to the target using any means of your choosing, including vendor-supplied programmers, on-chip bootloaders, or the firmware loading tool supplied in the /tools folder for Windows PCs.  Instructions for use are found with the tool.
+The firmware binary **.bin** files can be loaded to the target using any means of your choosing, including vendor-supplied programmers, on-chip bootloaders, or Firmware Modules' own firmware loading tool `fm_load` supplied in the /tools folder for Windows PCs.
 
 
