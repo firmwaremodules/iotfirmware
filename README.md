@@ -27,7 +27,7 @@ A brief description of available IoT applications is provided below.
 
 ### OTA Update Demo */otaupdate*
 
-Demonstrates a robust live over-the-air firmware application update.  The firmware update binary is securely pulled from this very repository.
+Demonstrates a robust and secure over-the-air firmware application update.  The firmware update binary is securely pulled from this very repository.
 
 ## Loading Firmware
 
