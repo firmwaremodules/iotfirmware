@@ -45,7 +45,6 @@ If the update is interrupted at any time, for example mid-way during the downloa
 ### What will happen?
 
 * The firmware application running on the MSP432 target MCU will be updated by downloading a new version of the same application from a folder on GitHub.
-* Every time the running application successfully connects to your local WiFi AP, it will send a tweet to https://twitter.com/MSPLaunchPad/ containing the "Unique ID" shown in the terminal window.
 
 ### Steps to complete the demo
 
@@ -132,3 +131,6 @@ This specific demo could be enhanced to show:
 * Provision the WiFi parameters using a mobile device.
 * Pulling update files from other content distribution networks such as Sync or Dropbox.
 * Adding a Certificate Authority certificate to verify the content server (in this case GitHub).  As it stands, the device could be tricked into redirecting to an unauthorized content server to download the firmware update file.  However, due to the update file encryption and OTA design, it would be very difficult to create an unauthorized update file that the device would accept.
+
+### Errata
+* The MSPLaunchPad Twitter feed is no longer relaying messages sent by this demo to the designated MQTT broker.  Therefore, no tweets are observed at `https://twitter.com/msplaunchpad` as a result of executing this demo.
