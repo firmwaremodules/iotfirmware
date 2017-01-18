@@ -25,6 +25,9 @@ The OTA demo firmware application uses a serial port to communicate with a termi
 
 OTA update demo binaries and detailed writeups are available for the following hardware platforms
 * MSP432 + CC3100 in **msp432** folder
+* CC2650 + CC3100 in **cc2650** folder
+* CC1350 + CC3100 in **cc1350** folder
+* CC1310 + CC3100 in **cc1310** folder
 
 
 
