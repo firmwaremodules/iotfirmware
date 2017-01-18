@@ -33,4 +33,8 @@ Demonstrates a robust live over-the-air firmware application update.  The firmwa
 
 The firmware binary **.bin** files can be loaded to the target using any means of your choosing, including vendor-supplied programmers, on-chip bootloaders, or Firmware Modules' own firmware loading tool `fm_load` supplied in the /tools folder for Windows PCs.
 
+## Customized Firmware
+
+If you'd like to customize one of our reference designs for your application, or have an application in mind, get in touch at `contact@firmwaremodules.com`
+
 
