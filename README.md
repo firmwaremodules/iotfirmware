@@ -41,6 +41,6 @@ The firmware binary **.bin** files can be loaded to the target using any means o
 
 ## Customized Firmware
 
-If you'd like to customize one of our reference designs for your application, or have an application in mind, get in touch at `contact@firmwaremodules.com`
+If you'd like to customize one of our reference designs for your product, or have an application in mind, get in touch at `contact@firmwaremodules.com`
 
 
