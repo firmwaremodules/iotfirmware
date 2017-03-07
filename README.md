@@ -1,6 +1,6 @@
 # IoT Firmware
 
-Secure, scalable and low-power firmware for the Internet of *Things*.  These firmware reference designs are easy to use and ready to work with popular development platforms for ARM Cortex-M MCUs.
+Secure, scalable and low-power firmware for the Internet of *Things*.  These firmware reference design binaries are easy to use and ready to work with popular development platforms for ARM Cortex-M MCUs.
 
 ## Supported Development Platforms
 
@@ -28,9 +28,12 @@ Each project folder contains firmware reference design binaries that implement a
 
 A brief description of available IoT applications is provided below.
 
-### OTA Update Demo */otaupdate*
+### OTA Update Demo */otaupdate/*
 
 Demonstrates a robust and secure over-the-air firmware application update.  The firmware update binary is securely pulled from this very repository.
+
+### Cloud and Sensor Platforms ###
+* Xively with Seeed Studio Grove  */xively/grove/*
 
 ## Loading Firmware
 
