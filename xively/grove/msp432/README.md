@@ -13,9 +13,9 @@ Estimated Time: 45 minutes
 
 ### Hardware
 
-* [TI LAUNCHXL-CC1350 LaunchPad](http://www.ti.com/tool/LAUNCHXL-CC1350) x1
+* [TI MSP-EXP432P401R LaunchPad](http://www.ti.com/tool/MSP-EXP432P401R) x1
 * [TI CC3100BOOST BoosterPack](http://www.ti.com/tool/CC3100BOOST) x1
-* [Seeed Studio Grove Starter Kit for LaunchPad] (https://www.seeedstudio.com/Grove-Starter-Kit-for-LaunchPad-p-2178.html)
+* [Seeed Studio Grove Starter Kit for LaunchPad] (https://www.seeedstudio.com/Grove-Starter-Kit-for-LaunchPad-p-2178.html) x1
 * Jumper wire x1 such as [these](http://www.digikey.com/product-search/en?keywords=1528-1159-ND).
 
 ### Software
@@ -38,7 +38,7 @@ The Seeed Studio Grove Starter Kit contains 10 separate sensor and actuator modu
 
 The details of how each sensor is connected is discussed below.
 
-The Xively IoT platform offers a powerful collection of device management features, monitoring and application integration.  And, the platform is available to anyone to get started without cost. 
+The Xively IoT platform offers a powerful collection of device management features, monitoring and application integration.  The platform is available to anyone to get started with for no cost. 
 
 | Grove Sensor | Grove Port | MSP432 Interface            | 
 |-------------|-------|-----------------------------------|
@@ -65,7 +65,7 @@ The Ultrasonic Ranger provides its range data in the form of an active high puls
 
 The first thing you need to do is to navigate to the Xively website https://www.xively.com/ and click their "Free Trial" button (top right of the page as of the time of writing).  Enter your info and select "Start Free Trial".
 
-You'll be brought into your account dashboard and "Product Launcher".  On the left side of the page there are a series of options with headings "Devices, End-Users, Groups, etc.  We'll be creating a new device template for the Grove-outfitted Launchpad to manage all of the sensors and actuators.
+You'll be brought into your account dashboard and "Product Launcher".  On the left side of the page there are a series of options with headings "Devices, End-Users, Groups", etc.  We'll be creating a new device template for the Grove-outfitted LaunchPad to manage all of the sensors and actuators.
 
 ![](https://github.com/firmwaremodules/iotfirmware/raw/master/xively/grove/msp432/resources/xively_trial_signup_page.png "Xively IoT Platform Trial Account Signup Page")
 
@@ -75,11 +75,11 @@ You'll be brought into your account dashboard and "Product Launcher".  On the le
 
 Select "Device templates" item in the Devices section of the left-hand side navigation pane.  If you have any existing templates, you'll see them listed here.  
 
-We are going to create a new device template with 11 channels: 1 for each Grove Starter Kit sensor data item or actuator.
+We are going to create a new device template and add 16 new channels: 1 for each Grove Starter Kit sensor data item or actuator and 5 for LaunchPad LEDs and buttons.
 
 Select "Create new device template" found at the top-right corner of the page.  Call it whatever you want; we called ours "CC3100 Grove"
 
-Each channel will be of the "simple" type, which means that a data array is passed to and from the device over an MQTT topic.  We are limited to two types of visualizers at this time: toggle, or slider. However, we can easily send strings (encoded or otherwise) to each MQTT topic and sensor, and will be using this feature to send melodies to the buzzer and digits to the 7-segment display.
+Each channel will be of the "simple" type, which simply means that a data array is passed to and from the device over an MQTT topic.  We are limited to two types of visualizers at this time: toggle, or slider. However, we can easily send strings (encoded or otherwise) to each MQTT topic and sensor, and will be using this feature to send melodies to the buzzer and digits to the 7-segment display.
 
 ![](https://github.com/firmwaremodules/iotfirmware/raw/master/xively/grove/msp432/resources/xively_device_templates.png "Xively IoT Platform Device Templates Page")
 
@@ -112,15 +112,15 @@ These additional channels are available on the MSP432 LaunchPad itself:
 * Button S1
 * Button S2
 
-After all is said and done, you should have 17 channels added to your template (including the built-in "_log" channel which we don't use in this demo).
+After all is said and done, you should have 17 channels in your template (including the built-in "_log" channel which we don't use in this demo).
 
 ### Create a device instance from your template
 
-Select the "Create new device" button in the top-right corner as shown.  Fill in any number as its serial number.  Select "Create".  Now comes an important step in provisioning your device.  You'll need to get your device credentials: a unique device ID (DEVICE_ID in the privisioning app) and a secret key (DEVICE_SECRET in the privisioning app) associated with only that device.  To get these two data items, select the "Get password" button.  If you choose to download the password, you'll get a key=value pair in a text file.  The key is the DEVICE_SECRET string, and the value is the DEVICE_ID.
+Select the "Create new device" button in the top-right corner as shown.  Fill in any number as its serial number.  Select "Create".  Now comes an important step in provisioning your device.  You'll need to get your device credentials: a unique device ID (DEVICE_ID in the provisioning app) and a secret key (DEVICE_SECRET in the provisioning app) associated with only that device.  To get these two data items, select the "Get password" button.  If you choose to download the password, you'll get a key=value pair in a text file.  The key is the DEVICE_SECRET string, and the value is the DEVICE_ID.
 
 ![](https://github.com/firmwaremodules/iotfirmware/raw/master/xively/grove/msp432/resources/xively_create_new_device_from_template.png "Xively IoT Platform Creating New Device From Template")
 
-You may also pull the DEVICE_ID field from the device page, along with the ACCOUNT_ID which you'll also need to properly provision your device.  These three data items should be recorded in a text file for easy cut and paste access when you provision your device with the provisioning firmware app (which we call the MTA).
+You may also pull the DEVICE_ID field from the device page, along with the ACCOUNT_ID which you'll also need to properly provision your device.  These three data items should be recorded in a text file for easy cut and paste access when you provision your device with the provisioning firmware app (which we call the MTA).  See the image below for the device's credential (provisioning) data fields (blurred out to protect our account).
 
 ![](https://github.com/firmwaremodules/iotfirmware/raw/master/xively/grove/msp432/resources/xively_device_credentials.png "Xively IoT Platform Obtaining Device Credentials")
 
@@ -132,7 +132,7 @@ A device represented in the Xively IoT platfrom can be simulated.  The simulated
 
 For channels that offer a range of values, i.e. Rotary, Moisture, Light, Sound, Temperature, Humidity, Ranger, Display, use a slider to visualize the data.
 
-For channels that offer one of two states
+For channels that offer one of two states, i.e.
 Motion, Relay, Button S1, Button S2, Green LED, Blue LED, Red LED, use a toggle.
 
 The buzzer channel works with strings and cannot be visualized.
@@ -148,7 +148,7 @@ Look at the section "Interacting with channels" later in this write-up to learn 
 
 
 1. **Assemble the hardware.** 
-Attach the Grove Starter Kit modules to the Grove Base as shown in the image and described in the table.
+Attach the Grove Starter Kit modules to the Grove Base as shown in the image and described in the introductory table.
 
 ![](https://github.com/firmwaremodules/iotfirmware/raw/master/xively/grove/msp432/resources/grove_sensors.png "Xively Grove MSP432 demo sensor attachment diagram")
 
@@ -192,7 +192,7 @@ Assemble the MSP432 LaunchPad and CC3100 BoosterPack as shown in the image below
 7. **Provision the device's WiFi settings and Xively device IDs.**  To do this we must boot into the device's MTA (manufacturing test application) by pulling P5.5 high and resetting the board.  Connect a short jumper wire as shown between the BoosterPack connector pins J3-30 and J1-1 and press the reset button.  
 
   
-  The serial terminal will show a simple menu requesting that you fill in 6 fields, your WiFi network's SSID, security type, and passkey, and your Xively ACCOUND_ID, DEVICE_ID and DEVICE_SECRET.  Enter each in turn as shown. In Tera Term, you can copy from Notepad with Ctrl-C then paste the unique ID strings with Edit->Paste.  The best way to do this is to assemble your Xively ID strings in a text editor such as Notepad.  
+  The serial terminal will show a simple menu requesting that you fill in 6 fields, your WiFi network's SSID, security type, and passkey, and your Xively ACCOUND_ID, DEVICE_ID and DEVICE_SECRET.  Enter each in turn as shown. In Tera Term, you can copy from Notepad with Ctrl-C then paste the unique ID strings with Edit->Paste.  The best way to do this is to first assemble your Xively ID strings in a text editor such as Notepad.  
   
   ```
 ************************************************************************
@@ -227,11 +227,12 @@ Assemble the MSP432 LaunchPad and CC3100 BoosterPack as shown in the image below
   >
   ```
 
+
   When complete, commit the settings to flash with menu option `4) Save WiFi settings` which appears only when a change has been made.  Remove the jumper wire from the 3.3V pin.  
   
-Leave the terminal emulator running so that you can see the status of your device including the messages it publishes and receives in real time.
+  Leave the terminal emulator running so that you can see the status of your device including the messages it publishes and receives in real time.
 
-After rebooting the board by pressing the LaunchPad's reset button, you should see output similar to the following.  Note that the GUIDs shown below have been obfuscated and do not represent any valid GUID in the Xively system.
+  After rebooting the board by pressing the LaunchPad's reset button, you should see output similar to the following.  Note that the GUIDs shown below have been obfuscated and do not represent any valid GUID in the Xively system.
 
 ```
 ************************************************************************
@@ -243,7 +244,7 @@ Host Driver Version: 1.0.0.1
 Build Version 2.2.0.1.31.1.2.0.2.1.0.3.23
 Device is configured in default state
 Device started as STATION
-[WLAN EVENT] STA Connected to the AP: ********* , BSSID: 4c:8b:30:3:26:1c
+[WLAN EVENT] STA Connected to the AP: ********* , BSSID: *:*:*:*:*:*
 [NETAPP EVENT] IP Acquired: IP=*********,Gateway=*********
 Initialized topic: xi/blue/v1/add4f022-2f0d-4906-ac64-8729238abc23/d/dc16c3c6-3188-4f5d-936f-d9712875c29a/Temperature
 Initialized topic: xi/blue/v1/add4f022-2f0d-4906-ac64-8729238abc23/d/dc16c3c6-3188-4f5d-936f-d9712875c29a/Green LED
@@ -278,7 +279,7 @@ topic:xi/blue/v1/add4f022-2f0d-4906-ac64-8729238abc23/d/dc16c3c6-3188-4f5d-936f-
 
 In your Xively device's main page select the "Messaging" tab.  Here, you are connecting directly to the MQTT broker and effectively subscribing to each channel.  Data published by your device to each channel will scroll by, and you can also publish arbitrary data to each channel.  For the Display and Buzzer channels, you can publish data strings that are meaningful to these devices.  
 
-For the Display channel, you can publish a 4-digit integer and have it appear on the display.  For example, publish "1234" to have that number displayed on the 4-segment display.
+For the Display channel, you can publish a 4-digit integer and have it appear on the display.  For example, publish "4567" to have that number displayed on the 4-segment display.
 
 For the Buzzer channel, you can publish a string containing a sequence of notes.  Spaces are interpreted as 1 beat pauses.  Each beat is 250 ms.  For example, send the string "abcdefg" to attempt to play the associated tones on the buzzer.  Please note that the buzzer is not a very good audio reproduction device!
 
@@ -296,7 +297,6 @@ For the Buzzer channel, you can publish a string containing a sequence of notes.
 ### Design Notes
 * The Xively client 'libXively' found on GitHub is used to connect with the IoT platform.  (See https://github.com/xively/xively-client-c).
 
-* The enhanced security mode as described in "CC3200 with enhanced security" is not implemented (OCSP stapling). Only the built-in security features of the CC3100 network processor are used.
 
 
 
