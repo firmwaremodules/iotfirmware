@@ -154,7 +154,7 @@ Attach the Grove Starter Kit modules to the Grove Base as shown in the image and
 
 Assemble the MSP432 LaunchPad and CC3100 BoosterPack as shown in the image below and connect to your PC with a USB cable.  The CC3100 BoosterPack can be mounted on top of the LaunchPad while the Grove Starter Kit can be mounted below to afford better access to the LaunchPad reset button.  Connect a jumper from 3.3V (J1-1) to P5.5 (J3-30) to select the provisioning application (the MTA) for initial boot.
 
-  ![](https://github.com/firmwaremodules/iotfirmware/raw/master/xively/grove/msp432/resources/grove_launchpad_wifi_assembly.png "Xively Grove MSP432 demo BootsterPack stack assembly")
+  ![](https://github.com/firmwaremodules/iotfirmware/raw/master/xively/grove/msp432/resources/grove_launchpad_wifi_assembly.png "Xively Grove MSP432 demo BoosterPack stack assembly")
   
 2. **Get the firmware files.** Download the firmware loader tool `fm_load.exe` and the `XIVELY-GROVE-MSP432-CC3100_1_0_5_MAN_0x85FC24B5.bin` firmware binary programming file to a folder on your PC.
 
