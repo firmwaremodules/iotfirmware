@@ -43,4 +43,9 @@ The firmware binary **.bin** files can be loaded to the target using any means o
 
 If you'd like to customize one of our reference designs for your product, or have an application in mind, get in touch at `contact@firmwaremodules.com`
 
+## FAQ
+
+### Where's the source code?
+* We use a highy integrated build and development process that is comprised of Java, Javascript and Python (in addition to 'C' code!) and consequently it is infeasible to distribute and parcel off pieces of our system for general consumption. The output of this system is what you see here; we produce manufacturable and OTA updatable firmware binaries that include bootloaders, provisioning apps, integrity checking, embedded versioning and security considered throughout - all tailored for a particular hardware platform and use case (e.g. MSP432 MCU, with CC3100 WiFi network processor, and GitHub as the OTA update host, and Xively as the IoT data platform).
+
 
