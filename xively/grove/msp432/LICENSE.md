@@ -1,6 +1,6 @@
 #XIVELY-GROVE-MSP432-CC3100
 
-##Copyright (c) 2016, Firmware Modules Inc.
+##Copyright (c) 2017, Firmware Modules Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -63,7 +63,7 @@ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-Copyright (c) 2008 Texas Instruments. All rights reserved.
+## Copyright (c) 2008 Texas Instruments. All rights reserved.
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License v1.0 and Eclipse Distribution License
 v. 1.0 which accompanies this distribution. The Eclipse Public License is
