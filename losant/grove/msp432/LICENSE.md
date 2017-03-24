@@ -1,6 +1,6 @@
-#LOSANT-GROVE-MSP432-CC3100
+# LOSANT-GROVE-MSP432-CC3100
 
-##Copyright (c) 2017, Firmware Modules Inc.
+## Copyright (c) 2017, Firmware Modules Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -30,9 +30,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 This firmware binary contains third-party components, which are subject to open source software licenses:
 
-#TI SDKs
+# TI SDKs
 
-##Copyright (c) 2014, Texas Instruments Incorporated
+## Copyright (c) 2014, Texas Instruments Incorporated
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -71,12 +71,12 @@ available at http://www.eclipse.org/legal/epl-v10.html and the Eclipse
 Distribution License is available at
 http://www.eclipse.org/org/documents/edl-v10.php.
 
-#Toolchain - GNU Tools for ARM Embedded Processors 4.9
+# Toolchain - GNU Tools for ARM Embedded Processors 4.9
 https://launchpadlibrarian.net/218827086/license.txt [part 12 applicable]
 
 
 
-#Eclipse Paho MQTT
+# Eclipse Paho MQTT
 
 /*******************************************************************************
  * Copyright (c) 2014 IBM Corp.
