@@ -33,7 +33,9 @@ A brief description of available IoT applications is provided below.
 Demonstrates a robust and secure over-the-air firmware application update.  The firmware update binary is securely pulled from this very repository.
 
 ### Cloud and Sensor Platforms ###
+Firmware applications that interact with an IoT cloud provider.
 * Xively with Seeed Studio Grove  */xively/grove/*
+* Losant with Seeed Studio Grove */losant/grove/*
 
 ## Loading Firmware
 
