@@ -47,7 +47,7 @@ This project turns the mcModule120 into a powerful, general purpose, IoT hardwar
 #### Wire the module to the debugger and unlock the module
 The first thing you'll need to do is to connect your mcModule120 to a low-cost CMSIS-DAP ARM debugger so that we can unlock then program the mcModule120.  Unlocking the mcModule120 will turn it into a general-purpose development platform for the nRF52832 MCU with an accurate temperature sensor, 3-axis accelerometer, 2 LEDs and 1 button.  Programming it will enable the Eddystone beacon functionality.
 
-The CMSIS-DAP debugger we're using is the under-$20 TI MSP-EXP432401R LaunchPad.  This LaunchPad can be turned into a general-purpose ARM debugger that is significantly more economical than the Segger J-Link setup that is typical for Nordic development, yet offers full access to the nRF52832 MCU.  You can use any CMSIS-DAP/DAPLink debugger supported by fm_load, which, at this time, is the XDS110 (from TI).  Most of the newer TI Launchpads contain the XDS110 debugger.
+The CMSIS-DAP debugger we're using is the under-$20 TI MSP-EXP432P401R LaunchPad.  This LaunchPad can be turned into a general-purpose ARM debugger that is significantly more economical than the Segger J-Link setup that is typical for Nordic development, yet offers full access to the nRF52832 MCU.  You can use any CMSIS-DAP/DAPLink debugger supported by fm_load, which, at this time, is the XDS110 (from TI).  Most of the newer TI Launchpads contain the XDS110 debugger.
 
 The fm_load application from Firmware Modules can unlock (factory reset) and program the mcModule120 devices.  There are other tools and methods out there to do these things, but this project will just describe the use of fm_load. 
 
@@ -174,7 +174,7 @@ The default Physical Web URL is https://www.mcthings.com which you may want to c
 
 #### Test and configure the Eddystone application
 
-If you've got this far, congratulations!  Now you get the play with your Eddystone beacon.
+If you've got this far, congratulations!  Now you get to play with your Eddystone-compatible beacon.
 
 Two Android apps are useful in testing, validating and configuring the beacons sensor: *nRF Connect*, and *nRF Beacon for Eddystone*.  Both apps are available for free from the Play store and should be installed on your mobile device.
 
@@ -187,7 +187,7 @@ You can view this activity with *nRF Connect* in the Scanner tab.  The mcModule1
 
 The real fun is when you get to configure the device with the Eddystone Configuration Service and the *nRF Beacon for Eddystone* app (you can access the raw BLE characteristics with other methods but this app provides a nice GUI for you to use).
 
-Launching the nRF Beacon for Eddystone app, enter the "Update" tab which will present you an option to connect with the device.  The mcMod120 with Eddystone application firmware is able to connect to the this app if you follow these instructions.  Press the button on the mcMod120 and both green and red LEDs should pulse rapidly, once for each connectable advertising beacon sent (100 ms period: much faster than the normal advertising rate).  This will last for 60 seconds before it times out and enters its normal, non-connectable mode again.  While both green and red LEDs are flashing, tap the "Connect" button in the app.  The device, called "mcMod120_Eddystone" should detected.
+Launching the nRF Beacon for Eddystone app, enter the "Update" tab which will present you an option to connect with the device.  The mcMod120 with Eddystone application firmware is able to connect to the this app if you follow these instructions.  Press the button on the mcMod120 and both green and red LEDs should pulse rapidly, once for each connectable advertising beacon sent (100 ms period: much faster than the normal advertising rate).  This will last for 60 seconds before it times out and enters its normal, non-connectable mode again.  While both green and red LEDs are flashing, tap the "Connect" button in the app.  The device, called "mcMod120_Eddystone", should be detected.
 
 Enter the unlock key.  The unlock key is simply FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (16 hexadecimal 0xFF bytes).  The device remains unlocked (open for configuration) until the next power cycle.
 
@@ -200,7 +200,7 @@ To save settings made in nRF Beacon for Eddystone app to the device, you must ex
 
 
 ### What's Next
-Configure a URL that is meaninful for you and place your beacon in the environment.  Any newer Android device should notify you of this beacon as you approach it.
+Configure a URL that is meaningful for you and place your beacon in the environment.  Any newer Android device should notify you of this beacon as you approach it.
 
 Eddystone beacons have a great many applications and use cases.  But once configured and deployed, the content they broadcast is largely static.  The next step is to enable dynamic and real-time deployment of content to the beacons behind the scenes and bypass the use of the Eddystone Configuration Service to configure the devices.
 
