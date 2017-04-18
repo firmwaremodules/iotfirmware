@@ -92,7 +92,7 @@ Next we'll unlock the device.
 
 Run fm_load with the options "--factory_reset" and "-t nrf52832" as shown:
 ```
-fm_load "-t nrf52832 --factory_reset" 
+fm_load -t nrf52832 --factory_reset
 
 Firmware Module System Firmware Loader v1.2.68
 Copyright (c) 2016 Firmware Modules Inc.
@@ -122,7 +122,7 @@ Place the following files in a directory with fm_load.
 
 Step 1: Download the S132 version 4.0.2 SoftDevice firmware from Nordic Semiconductor's website at this URL: https://www.nordicsemi.com/eng/Products/S132-SoftDevice
 
-Step 2: Download the Eddystone application firmware from GitHub: <>ble_app_eddystone_mcmod120_s132.hex
+Step 2: Download the Eddystone application firmware from GitHub: [ble_app_eddystone_mcmod120_s132.hex](https://github.com/firmwaremodules/iotfirmware/raw/master/mcthings/eddystone/ble_app_eddystone_mcmod120_s132.hex)
 
 Step 3: Load the SoftDevice to mcModule120 flash:
 ```
