@@ -29,7 +29,7 @@ Estimated Time: 60 minutes
 ## Story
 ### Introduction
 
-Get access to the Physical Web and a growing list of Eddystone Beacon use cases with the powerful and low-power mcModule120 IoT sensor node from mcThings.  With your mcModule120 loaded with Eddystone firmware, you can broadcase URL, UID and TLM (telemetry) frames. In many scenarios, the user's Android device will automatically notify the user of the presense of a nearby beacon device with the content of the URL - all without an installed app.  More advanced mobile device applications can be  built to utilize the UID and TLM frames for applications such as asset tracking, industrial process monitoring, smart city deployments, and many commercial applications such as proximity-driven experience enhancements.
+Get access to the Physical Web and a growing list of Sensor Beacon use cases with the powerful and low-power mcModule120 IoT sensor node from mcThings.  With your mcModule120 loaded with Sensor Beacon for Eddystone firmware, you can broadcast URL, UID and TLM (telemetry) frames. In many scenarios, the user's Android device will automatically notify the user of the presense of a nearby beacon device with the content of the URL - all without an installed app.  More advanced mobile device applications can be  built to utilize the UID and TLM frames for applications such as asset tracking, industrial process monitoring, smart city deployments, and many commercial applications such as proximity-driven experience enhancements.
 
 The firmware you'll load onto the device consists of two parts:
 - The Nordic Semiconductor "SoftDevice", a pre-built IoT firmware core containing BLE stack and device abstraction layers
