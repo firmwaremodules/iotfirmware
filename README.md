@@ -10,6 +10,9 @@ TI MCU and LaunchPad Ecosystem:
 * CC1350 with CC3100  [*LAUNCHXL-CC1350 + CC3100BOOST*]
 * CC1310 with CC3100  [*LAUNCHXL-CC1310 + CC3100BOOST*]
 
+Nordic nRF5:
+ * nRF52832
+
 The MSP432 is a more capable "gateway-class" device with more RAM and Flash but no internal radio.  The MSP432's low-power architecture means that it can be built into the design of battery-powered IoT gateways and edge-routers.
 
 The CC26XX and CC13XX class of devices offer extremely low power consumption with on-chip radios and LPLAN network stacks making them ideal for implementing devices at the IoT's edge - connecting to sensors and actuators to interact with the physical world.
@@ -18,6 +21,8 @@ The CC26XX and CC13XX class of devices offer extremely low power consumption wit
 * The CC1350 device targets a hybrid phy network architecture with BLE (2.4) and 802.15.4 (sub-GHz) possible to support novel device provisioning schemes.
 
 The CC3100 is a WiFi network processor hosting the entire secure WiFi network stack.  A simple interface allows mating to the MSP432 gateway MCU (and even directly to the CC26xx and CC13xx devices as demonstrated in the OTA Update demos).
+
+The nRF52832 is a very capable yet low-power Cortex-M4F SoC with integrated 2.4 GHz radio supporting Bluetooth and ANT capability.  This device offers are large amount of flash and RAM - 512K and 64K respectively - supporting just about any type of application including the use of on-board flash for robust OTA update schemes.  The nRF52832 devices use an independent firmware component called "SoftDevices" provided by Nordic Semiconductor to implement device and network abstraction layers for the IoT firmware developer.
 
 All of these devices have on-board security support allowing for the design of extremely secure end-to-end IoT networks.
 
@@ -36,6 +41,9 @@ Demonstrates a robust and secure over-the-air firmware application update.  The 
 Firmware applications that interact with an IoT cloud provider.
 * Xively with Seeed Studio Grove  */xively/grove/*
 * Losant with Seeed Studio Grove */losant/grove/*
+
+### mcThings Eddystone
+ * Sensor beacons supporting the Eddystone protocol and the mcThings mcModule120 battery-powered sensor node hardware.
 
 ## Loading Firmware
 
